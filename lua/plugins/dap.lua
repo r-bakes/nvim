@@ -1,14 +1,36 @@
 return {
   "rcarriga/nvim-dap-ui",
-  opts = function(_, opts)
+  opts = {
+    layouts = {
+      {
+        elements = {
+          "scopes",
+          "breakpoints",
+          "stacks",
+          "watches",
+        },
+        size = 80, -- wider left sidebar
+        position = "left",
+      },
+      {
+        elements = {
+          "repl",
+          "console",
+        },
+        size = 25, -- taller bottom tray
+        position = "bottom",
+      },
+    },
+  },
+  config = function(_, opts)
     local dap = require("dap")
+    local dapui = require("dapui")
 
-    -- Override the default LazyVim behavior to not auto-close dap-ui
-    dap.listeners.after.event_terminated["dapui_config"] = nil
+    -- Run LazyVim's default dapui setup first
+    require("dapui").setup(opts)
+
+    -- Now override its auto-listeners auoto-close behavior
     dap.listeners.before.event_terminated["dapui_config"] = nil
     dap.listeners.before.event_exited["dapui_config"] = nil
-
-    return opts
   end,
 }
-
