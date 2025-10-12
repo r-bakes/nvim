@@ -1,10 +1,16 @@
 return {
-  { "EdenEast/nightfox.nvim" },
-
+  -- { "EdenEast/nightfox.nvim" },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      flavour = "latte",
+    },
+  },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nordfox",
+      colorscheme = "catppuccin",
     },
   },
 }

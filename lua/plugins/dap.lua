@@ -29,7 +29,7 @@ return {
     -- Run LazyVim's default dapui setup first
     require("dapui").setup(opts)
 
-    -- Now override its auto-listeners auoto-close behavior
+    -- NO AUTOCLOSE - Now override its auto-listeners auoto-close behavior
     dap.listeners.before.event_terminated["dapui_config"] = nil
     dap.listeners.before.event_exited["dapui_config"] = nil
   end,
